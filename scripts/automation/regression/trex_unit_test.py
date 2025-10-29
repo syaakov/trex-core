@@ -48,7 +48,6 @@ import trex_scenario
 import socket
 from pprint import pprint
 import time
-from distutils.dir_util import mkpath
 import re
 from io import StringIO
 from argparse import ArgumentParser
@@ -639,7 +638,7 @@ if __name__ == "__main__":
             CTRexScenario.setup_name = os.path.basename(CTRexScenario.setup_dir)
             xml_name = 'report_%s.xml' % CTRexScenario.setup_name
         xml_arg= '--xunit-file=%s/%s' % (CTRexScenario.report_dir, xml_name)
-        mkpath(CTRexScenario.report_dir)
+        os.makedirs(CTRexScenario.report_dir, exist_ok=True)
 
     sys_args = sys.argv[:]
     for i, arg in enumerate(sys.argv):
